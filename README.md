@@ -1,5 +1,18 @@
 # season-planner
 
+## Set up
+
+Please install:
+import numpy as np
+import math
+import matplotlib.pyplot as plt
+from PIL import Image
+from datetime import date, timedelta, datetime
+
+## Usage
+
+This code can be accessed by cloning it from GitHub repository.
+
 ## Describe how the system is personally meaningful to you.
 This system is personally meaningful to me because I am an indecisive person, and it takes me a huge amount of planning to be able to do a certain activity. This system get rids of indecisive and instead give me random dates that I should do the activity. It does not require much effort, and all the activities are the ones I love to do during a certain season. Furthermore it is a planner with a lot of flexibility in which the date could be randomizes if chosen again.
 
