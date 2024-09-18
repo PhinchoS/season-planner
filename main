@@ -35,6 +35,8 @@ class SeasonalPlanner():
     def fav_season(self):
         """
         Ask user for their favorite season
+        
+        Assign user's output to a variable
          """
         fav_season = input("What is your favorite season? ")
         if fav_season == "fall":
@@ -46,18 +48,20 @@ class SeasonalPlanner():
         else:
            self.user_season = self.SUMMER
      
-     
     def num_activities(self):
         """
         Ask user for number of activities recommendation
+        
+        Returns an integer
         """
         num_activities = input("How many recommendation do you want? ")
         return num_activities
-
      
     def random_num_sum_one(self, n):
         """
-        Writes random number that are associated with a key
+        Calculates random number with a sum of 1 that are associated with a key
+        
+        Returns a list of values 
         """
         RANDOM_VALUE_LIST.clear()
         [random_values] = np.random.dirichlet(np.ones(n),size=1)
@@ -67,6 +71,8 @@ class SeasonalPlanner():
     def create_transition_matrix(self):
         """
         Creates a specific matrix depending on the season
+        
+        Returns dictionary with user's favorite activity as a key and probability as a value
         """
         user_fav_season = self.user_season 
         length = len(user_fav_season)
@@ -84,6 +90,8 @@ class SeasonalPlanner():
     def final_transition_matrix(self):
         """
         Writes out the final season matrix
+        
+        Returns the final transition matrix
         """
         user_fav_season = self.user_season
         transition_matrix = dict()
@@ -95,6 +103,8 @@ class SeasonalPlanner():
     def get_next_activity(self, current_activity):
         """
         Decides what activity to recommend depending on current activity
+        
+        Return the next activity based on the probability from the current one
         """
         matrix = self.final_transition_matrix()
         # print(self.final_transition_matrix().keys())
@@ -105,6 +115,8 @@ class SeasonalPlanner():
     def get_activity(self, activity = "ice fishing", time=5): 
         """
         Get a new activity and adds them in a list
+        
+        Returns a list of activity the user can do 
         """
         time = self.num_activities
         full_list = []
@@ -116,6 +128,8 @@ class SeasonalPlanner():
     def date_generator(self, start_date = date.today()):
         """
         Randomly generates date according to the season start and end date
+        
+        Returns days that a user could do the activity
         """
         self.start_date = start_date
         dates = {"SPRING":[date(2025, 3, 20), date(2025, 6, 20)],"SUMMER":[date(2025, 6, 20), date(2025, 9, 22)],
@@ -133,10 +147,11 @@ class SeasonalPlanner():
         days = [start_date + timedelta(days = int(day)) for day in random_days]
         return days
         
-       
     def activity_to_images(self, sequence):
         """
         Gets an image of the activity 
+        
+        Return a image depending on the activity
         """
         images = []
         for move in sequence:
@@ -168,6 +183,7 @@ class SeasonalPlanner():
                 case "snowshoeing":
                     images.append("assets/snowshoeing.jpeg")
         return images
+
 def main():
     maker = SeasonalPlanner()
     date = maker.date_generator()
